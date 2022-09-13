@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import './index.css';
 
+const books = [];
 const firstBook = {
   img: 'https://images-na.ssl-images-amazon.com/images/I/91HHxxtA1wL._AC_UL900_SR200,200_.jpg',
   title: 'The Wonderful Things You Will Be',
@@ -24,7 +25,17 @@ function BookList() {
         title={firstBook.title}
         author={firstBook.author}
         price={firstBook.price}
-      />
+      >
+        {/* This is a children prop. Content is placed between opening 
+        and closing tags.
+        */}
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sit
+          sunt animi alias nobis, esse, est corrupti fugiat, ullam debitis fuga.
+          Provident, deleniti! Eligendi enim, veniam sapiente velit molestias
+          consequuntur.
+        </p>
+      </Book>
       <Book
         img={secondBook.img}
         title={secondBook.title}
@@ -36,6 +47,8 @@ function BookList() {
 }
 
 const Book = (props) => {
+  // the children prop is destructured with the name "children"
+  const { children } = props;
   const { img, title, author, price } = props;
   return (
     <article className='book'>
@@ -43,6 +56,7 @@ const Book = (props) => {
       <h2>{title}</h2>
       <h4>{author}</h4>
       <h6>{price}</h6>
+      {children}
     </article>
   );
 };
