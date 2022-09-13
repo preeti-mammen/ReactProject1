@@ -1,8 +1,12 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import { books } from './bookdata';
 import Book from './books';
+
+// New code for React 18. Replaced ReactDom.render function
+const container = document.getElementById('root');
+const root = createRoot(container);
 
 function BookList() {
   return (
@@ -14,4 +18,4 @@ function BookList() {
   );
 }
 
-ReactDom.render(<BookList />, document.getElementById('root'));
+root.render(<BookList />);
