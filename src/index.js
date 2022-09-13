@@ -4,33 +4,42 @@ import './index.css';
 
 const books = [
   {
+    id: 1,
     img: 'https://images-na.ssl-images-amazon.com/images/I/91HHxxtA1wL._AC_UL900_SR200,200_.jpg',
     title: 'The Wonderful Things You Will Be',
     author: 'Emily Winfield Martin',
-    price: '$ 5.00',
   },
   {
+    id: 2,
     img: 'https://images-eu.ssl-images-amazon.com/images/I/51HZN1uIVqL._SY264_BO1,204,203,200_QL40_FMwebp_.jpg',
     title: 'Great Stories for Children',
     author: 'Ruskin Bond',
-    price: '$ 6.00',
+  },
+  {
+    id: 3,
+    img: 'https://m.media-amazon.com/images/I/71F8bbjOSNL._AC_UY436_FMwebp_QL65_.jpg',
+    title: 'Dot To Dot: First Fun Activity Books for Kids',
+    author: 'Wonder House Books',
   },
 ];
 
-const names = ['peter', 'james', 'john'];
-
 function BookList() {
-  return <section className='booklist'>{books}</section>;
+  return (
+    <section className='booklist'>
+      {books.map((book) => {
+        return <Book key={book.id} {...book}></Book>;
+      })}
+    </section>
+  );
 }
 
 const Book = (props) => {
-  const { img, title, author, price } = props;
+  const { img, title, author } = props;
   return (
     <article className='book'>
       <img src={img} alt='' />
       <h2>{title}</h2>
       <h4>{author}</h4>
-      <h6>{price}</h6>
     </article>
   );
 };
